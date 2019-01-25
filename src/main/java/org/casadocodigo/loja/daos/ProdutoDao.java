@@ -1,13 +1,13 @@
 package org.casadocodigo.loja.daos;
 
 import org.casadocodigo.loja.models.Produto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Access;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Transactional
 @Repository
 public class ProdutoDao {
 
