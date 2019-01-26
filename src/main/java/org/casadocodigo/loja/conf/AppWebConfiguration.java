@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, ProdutoDao.class})
+@ComponentScan(basePackageClasses = {HomeController.class,ProdutoDao.class})
 public class AppWebConfiguration {
 
 

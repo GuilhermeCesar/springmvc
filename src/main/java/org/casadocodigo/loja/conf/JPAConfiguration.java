@@ -21,9 +21,9 @@ public class JPAConfiguration {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
+        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo?useSSL=false&useTimezone=true&serverTimezone=UTC");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
         factory.setJpaVendorAdapter(vendorAdapter);
@@ -33,7 +33,6 @@ public class JPAConfiguration {
         props.setProperty("hibernate.show_sql", "true");
         props.setProperty("hibernate.hbm2ddl.auto", "update");
 
-
         factory.setPackagesToScan("org.casadocodigo.loja.daos");
         factory.setJpaProperties(props);
 
@@ -42,11 +41,12 @@ public class JPAConfiguration {
 
     @Bean
     public PlatformTransactionManager trasactionManager(EntityManagerFactory emf){
-        JpaTransactionManager jpaTransactionManager =  new JpaTransactionManager(emf);
-        jpaTransactionManager.setEntityManagerFactory(
-                this.entityManagerFactory().getObject()
-        );
-
-        return jpaTransactionManager;
+        try {
+            JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(emf);
+            return jpaTransactionManager;
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 }
