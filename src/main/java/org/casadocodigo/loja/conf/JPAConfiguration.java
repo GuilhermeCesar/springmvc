@@ -16,27 +16,30 @@ import java.util.Properties;
 public class JPAConfiguration {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
+        factoryBean.setJpaVendorAdapter(vendorAdapter);
+
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUsername("root");
         dataSource.setPassword("root");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
-        factory.setJpaVendorAdapter(vendorAdapter);
+        factoryBean.setDataSource(dataSource);
 
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         props.setProperty("hibernate.show_sql", "true");
         props.setProperty("hibernate.hbm2ddl.auto", "update");
 
-        factory.setPackagesToScan("org.casadocodigo.loja.daos");
-        factory.setJpaProperties(props);
+        factoryBean.setJpaProperties(props);
 
-        return factory;
+        factoryBean.setPackagesToScan("org.casadocodigo.loja.models");
+
+        return factoryBean;
     }
 
     @Bean
