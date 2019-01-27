@@ -40,8 +40,8 @@ public class ProdutosController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView grava(@Valid Produto produto,BindingResult result, RedirectAttributes redirectAttributes){
         System.out.println("Submetendo o formulario ");
-
         System.out.println(result.hasErrors());
+        System.out.println(produto);
 
         if(result.hasErrors()){
             return this.form();

@@ -32,6 +32,11 @@
             <div><form:errors path="paginas"/></div>
             <input type="number" name="paginas">
         </div>
+        <div>
+            <label>Data de lançamento</label>
+            <input name="dataLancamento" type="text">
+            <form:errors path="dataLancamento"/>
+        </div>
         <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
             <div>
                 <label>${tipoPreco}</label>
