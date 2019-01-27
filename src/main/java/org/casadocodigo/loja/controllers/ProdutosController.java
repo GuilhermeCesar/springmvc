@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("produtos")
+@RequestMapping("/produtos")
 public class ProdutosController {
 
     @Autowired
@@ -51,11 +51,14 @@ public class ProdutosController {
 
         redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso");
 
+        System.out.println("Redirect produtos");
+
         return new ModelAndView("redirect:/produtos");
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listar(){
+        System.out.println("Chegou no produto");
         ModelAndView modelAndView = new ModelAndView("produtos/lista");
         List<Produto> produtos = this.produtoDao.listar();
 

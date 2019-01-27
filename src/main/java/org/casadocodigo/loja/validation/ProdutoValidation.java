@@ -5,6 +5,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.Objects;
+
 
 public class ProdutoValidation implements Validator {
 
@@ -25,7 +27,7 @@ public class ProdutoValidation implements Validator {
 
             Produto produto = (Produto) o;
 
-            if (produto.getPaginas() > 0) {
+            if (Objects.isNull(produto.getPaginas()) || produto.getPaginas().equals(0)) {
                 errors.rejectValue("paginas", "field.required");
             }
         }catch (Exception ex){
