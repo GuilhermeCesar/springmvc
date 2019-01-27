@@ -11,42 +11,41 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <html>
-<head>
-    <title>Livros de Java, Android.Iphone</title>
-</head>
-<body>
-    <form:form action="${s:mvcUrl('PC#grava').build()}" method="POST" commandName="produto">
-        <div>
-            <label>Titulo</label>
-            <div><form:errors path="titulo"/></div>
-            <input type="text" name="titulo">
-        </div>
-        <div>
-            <label>Descrição</label>
-            <div><form:errors path="descricao"/></div>
-            <textarea rows="10" cols="20" name="descricao">
-            </textarea>
-        </div>
-        <div>
-            <label>Paginas</label>
-            <div><form:errors path="paginas"/></div>
-            <input type="number" name="paginas">
-        </div>
-        <div>
-            <label>Data de lançamento</label>
-            <input name="dataLancamento" type="text">
-            <form:errors path="dataLancamento"/>
-        </div>
-        <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
+    <head>
+        <title>Livros de Java, Android.Iphone</title>
+    </head>
+    <body>
+        <form:form action="${s:mvcUrl('PC#grava').build()}" method="POST" commandName="produto">
             <div>
-                <label>${tipoPreco}</label>
-                <input type="text" name="precos  [${status.index}].valor">
-                <input type="hidden" name="precos[${status.index}].tipo" value="${tipoPreco}">
+                <label>Titulo</label>
+                <form:input path="titulo"/>
+                <form:errors path="titulo"/>
             </div>
-        </c:forEach>
-        <div>
-            <button type="submit">Cadastrar</button>
-        </div>
-    </form:form>
-</body>
+            <div>
+                <label>Descrição</label>
+                <form:textarea path="descricao" rows="10" cols="20"/>
+                <form:errors path="descricao"/>
+            </div>
+            <div>
+                <label>Paginas</label>
+                <form:input path="paginas"/>
+                <form:errors path="paginas"/>
+            </div>
+            <div>
+                <label>Data de lançamento</label>
+                <form:input path="dataLancamento"/>
+                <form:errors path="dataLancamento"/>
+            </div>
+            <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
+                <div>
+                    <label>${tipoPreco}</label>
+                    <form:input path="precos[${status.index}].valor"/>
+                    <form:hidden path="precos[${status.index}].tipo" value="${tipoPreco}"/>
+                </div>
+            </c:forEach>
+            <div>
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form:form>
+    </body>
 </html>
