@@ -15,7 +15,8 @@
         <title>Livros de Java, Android.Iphone</title>
     </head>
     <body>
-        <form:form action="${s:mvcUrl('PC#grava').build()}" method="POST" commandName="produto">
+        <form:form action="${s:mvcUrl('PC#grava').build()}" method="POST"
+                   commandName="produto" enctype="multipart/form-data">
             <div>
                 <label>Titulo</label>
                 <form:input path="titulo"/>
@@ -44,8 +45,12 @@
                 </div>
             </c:forEach>
             <div>
+                <label>Sumário</label>
+                <input name="sumario" type="file"/>
+            </div>
+            <div>
                 <button type="submit">Cadastrar</button>
             </div>
-        </form:form>
+           </form:form>
     </body>
 </html>

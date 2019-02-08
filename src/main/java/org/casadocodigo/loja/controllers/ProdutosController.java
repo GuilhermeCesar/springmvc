@@ -11,6 +11,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -38,10 +39,10 @@ public class ProdutosController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView grava(@Valid Produto produto,BindingResult result, RedirectAttributes redirectAttributes){
-        System.out.println("Submetendo o formulario ");
-        System.out.println(result.hasErrors());
-        System.out.println(produto);
+    public ModelAndView grava(MultipartFile sumario, @Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes){
+
+        System.out.println(sumario.getOriginalFilename());
+
 
         if(result.hasErrors()){
             return this.form(produto);
