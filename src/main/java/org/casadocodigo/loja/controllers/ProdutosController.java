@@ -39,7 +39,9 @@ public class ProdutosController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView grava(MultipartFile sumario, @Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes){
+    public ModelAndView gravar(
+            MultipartFile sumario,
+            @Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes){
 
         System.out.println(sumario.getOriginalFilename());
 

@@ -15,8 +15,9 @@
         <title>Livros de Java, Android.Iphone</title>
     </head>
     <body>
-        <form:form action="${s:mvcUrl('PC#grava').build()}" method="POST"
-                   commandName="produto" enctype="multipart/form-data">
+        <form:form action="${s:mvcUrl('PC#gravar').build()}" method="POST"
+                   commandName="produto"
+                   enctype="multipart/form-data">
             <div>
                 <label>Titulo</label>
                 <form:input path="titulo"/>

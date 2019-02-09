@@ -34,6 +34,6 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement("  "));
+        registration.setMultipartConfig(new MultipartConfigElement(""));
     }
 }

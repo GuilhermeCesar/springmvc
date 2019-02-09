@@ -10,8 +10,6 @@ HomeController {
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String index(){
-        System.out.println("Entrando na home da casa do código");
-
         return "home";
     }
 }
