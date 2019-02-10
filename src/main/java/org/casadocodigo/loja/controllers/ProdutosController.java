@@ -1,6 +1,7 @@
 package org.casadocodigo.loja.controllers;
 
 import org.casadocodigo.loja.daos.ProdutoDao;
+import org.casadocodigo.loja.infra.FileSaver;
 import org.casadocodigo.loja.models.Produto;
 import org.casadocodigo.loja.models.TipoPreco;
 import org.casadocodigo.loja.validation.ProdutoValidation;
@@ -24,6 +25,9 @@ public class ProdutosController {
 
     @Autowired
     private ProdutoDao produtoDao;
+
+    @Autowired
+    private FileSaver fileSaver;
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
@@ -50,11 +54,12 @@ public class ProdutosController {
             return this.form(produto);
         }
 
+        String path = fileSaver.write("arquivos-sumario",sumario);
+        produto.setSumarioPath(path);
         this.produtoDao.gravar(produto);
 
         redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso");
 
-        System.out.println("Redirect produtos");
 
         return new ModelAndView("redirect:/produtos");
     }
