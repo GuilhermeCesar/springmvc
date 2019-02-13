@@ -22,4 +22,14 @@ public class ProdutoDao {
     public List<Produto> listar(){
         return manager.createQuery("select p from Produto p").getResultList();
     }
+
+    public Produto find(Integer id) {
+        StringBuilder hql = new StringBuilder();
+        hql.append("select distinct (p) from Produto p join fetch p.precos preco ")
+            .append("where p.id = :id");
+
+        return this.manager.createQuery(hql.toString(),Produto.class)
+                .setParameter("id",id)
+                .getSingleResult();
+    }
 }
