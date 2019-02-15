@@ -30,6 +30,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
 
+        resolver.setExposedContextBeanNames("carrinhoCompras");
+
         return resolver;
     }
 

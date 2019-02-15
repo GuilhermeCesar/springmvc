@@ -20,12 +20,11 @@ public class CarrinhoComprasController {
     @Autowired
     private CarrinhoCompras carrinho;
 
-    @RequestMapping("add")
+    @RequestMapping("/add")
     public ModelAndView add(Integer produtoId, TipoPreco tipoPreco){
+        System.out.println("Adicione ao carrinho ");
         ModelAndView modelAndView = new ModelAndView("redirect:/produtos");
         CarrinhoItem carrinhoItem = this.criaItem(produtoId, tipoPreco);
-
-
 
 
         return modelAndView;
