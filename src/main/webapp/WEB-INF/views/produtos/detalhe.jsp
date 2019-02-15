@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -71,7 +72,7 @@
 		</header>
 
 		<section class="buy-options clearfix">
-			<form action="/carrinho/add" method="post" class="container">
+			<form action='<c:url value="carrinho/add"/>' method="post" class="container">
 				<input type="hidden" value="AQUI COLOQUE A ID DO PRODUTO" name="produtoId" >
 				<ul id="variants" class="clearfix">
 					<input type="hidden" value="${produto.id}" name="produtoId"/>
@@ -103,12 +104,14 @@
 			<section class="data product-detail">
 				<h2 class="section-title">Dados do livro:</h2>
 				<p>
-					Número de páginas: <span>AQUI O NÚMERO DE PÁGINAS</span>
+					Número de páginas: <span>${produto.paginas}</span>
 				</p>
 				<p></p>
 				<p>
 					Data de publicação:
-					<span class="publishAt">${produto.dataLancamento}</span>
+					<span class="publishAt">
+						<fmt:formatDate value="${produto.dataLancamento.time}" pattern="dd/MM/yyyy"></fmt:formatDate>
+					</span>
 				</p>
 				<p>
 					Encontrou um erro? <a href='/submissao-errata' target='_blank'>Submeta uma errata</a>
