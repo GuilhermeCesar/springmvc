@@ -1,7 +1,5 @@
 package org.casadocodigo.loja.models;
 
-import java.util.Objects;
-
 public class CarrinhoItem {
 
     private Produto produto;
@@ -29,16 +27,30 @@ public class CarrinhoItem {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarrinhoItem that = (CarrinhoItem) o;
-        return Objects.equals(produto, that.produto) &&
-                tipoPreco == that.tipoPreco;
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+        result = prime * result + ((tipoPreco == null) ? 0 : tipoPreco.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(produto, tipoPreco);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CarrinhoItem other = (CarrinhoItem) obj;
+        if (produto == null) {
+            if (other.produto != null)
+                return false;
+        } else if (!produto.equals(other.produto))
+            return false;
+        if (tipoPreco != other.tipoPreco)
+            return false;
+        return true;
     }
 }

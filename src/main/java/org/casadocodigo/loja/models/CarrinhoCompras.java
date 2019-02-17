@@ -24,7 +24,7 @@ public class CarrinhoCompras {
     public int getQuantidade(){
         return itens.values()
                 .stream()
-                .reduce(0,(proximo, acumulador)->proximo+acumulador);
+                .reduce(0,(proximo, acumulador) -> proximo + acumulador );
 
     }
 }
