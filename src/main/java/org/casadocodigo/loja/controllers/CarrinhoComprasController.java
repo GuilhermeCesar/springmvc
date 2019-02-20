@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Objects;
+
 @RequestMapping("/carrinho")
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
@@ -46,5 +48,13 @@ public class CarrinhoComprasController {
 
         return carrinhoItem;
 
+    }
+
+
+    @RequestMapping("/remover")
+    public ModelAndView remover(Integer produtoId, TipoPreco tipoPreco){
+        carrinho.remover(produtoId,tipoPreco);
+
+        return new ModelAndView("redirect:/carrinho");
     }
 }

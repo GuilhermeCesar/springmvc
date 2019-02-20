@@ -1,5 +1,6 @@
 package org.casadocodigo.loja.models;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -50,5 +51,11 @@ public class CarrinhoCompras implements Serializable {
             total = total.add(getTotal(item));
         }
         return total;
+    }
+
+    public void remover(Integer produtoId, TipoPreco tipoPreco) {
+        Produto produto = new Produto();
+        produto.setId(produtoId);
+        this.itens.remove(new CarrinhoItem(produto,tipoPreco));
     }
 }
