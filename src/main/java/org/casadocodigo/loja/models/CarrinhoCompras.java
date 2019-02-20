@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,6 +17,11 @@ public class CarrinhoCompras {
 
     public void add(CarrinhoItem item){
         itens.put(item, this.getQuantidade(item) + 1);
+    }
+
+
+    public Collection<CarrinhoItem> getItens() {
+        return itens.keySet();
     }
 
     private Integer getQuantidade(CarrinhoItem item) {
@@ -29,5 +36,9 @@ public class CarrinhoCompras {
                 .stream()
                 .reduce(0,(proximo, acumulador) -> proximo + acumulador );
 
+    }
+
+    public BigDecimal getTotal(CarrinhoItem item){
+        return item.getTotal(this.getQuantidade(item));
     }
 }
