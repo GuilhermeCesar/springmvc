@@ -6,6 +6,8 @@ public class CarrinhoItem {
 
     private Produto produto;
     private TipoPreco tipoPreco;
+    private BigDecimal preco;
+
 
     public CarrinhoItem(Produto produto, TipoPreco tipoPreco) {
         this.produto = produto;
@@ -13,7 +15,8 @@ public class CarrinhoItem {
     }
 
     public BigDecimal getPreco(){
-        return this.produto.precoPara(tipoPreco);
+        preco = this.produto.precoPara(tipoPreco);
+        return preco;
     }
 
     public Produto getProduto() {

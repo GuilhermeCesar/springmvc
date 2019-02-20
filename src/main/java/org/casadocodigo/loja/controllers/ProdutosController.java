@@ -78,7 +78,6 @@ public class ProdutosController {
 
     @RequestMapping("/detalhe/{id}")
     public ModelAndView detalhe(@PathVariable("id") Integer id){
-        System.out.println("Chegou no detalhe");
         ModelAndView modelAndView = new ModelAndView("produtos/detalhe");
         Produto produto = this.produtoDao.find(id);
         System.out.println(produto);
