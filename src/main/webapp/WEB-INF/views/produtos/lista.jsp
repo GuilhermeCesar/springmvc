@@ -13,6 +13,15 @@
 <html>
 <head>
     <title>Livros de Java, Android.Iphone</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <c:url value="resources/css" var="cssPath"/>
+    <link rel="stylesheet" href="${cssPath}/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="${cssPath}/bootstrap-theme.min.css">
+
 </head>
 <body>
     <h1>Lista de produtos</h1>
