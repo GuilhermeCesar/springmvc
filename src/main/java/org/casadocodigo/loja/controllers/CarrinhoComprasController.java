@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Objects;
-
 @RequestMapping("/carrinho")
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
