@@ -7,6 +7,7 @@
 --%>
 <%@attribute name="titulo"  required="true" %>
 <%@attribute name="bodyClass" required="false" %>
+<%@attribute name="extraScripts" fragment="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,7 @@
         <jsp:doBody/>
 
         <%@include file="/WEB-INF/views/rodape.jsp"%>
+        <jsp:invoke fragment="extraScripts"/>
 
     </body>
 </html>
