@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-
+<c:url value="/" var="contextPath" />
 <tags:pageTemplate titulo="Seu carrinho de compras">
 	<section class="container middle">
 		<h2 id="cart-title">Seu carrinho de compras</h2>
@@ -29,7 +29,7 @@
 					<tr>
 						<td class="cart-img-col">
 							<img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145"
-							width="71px" height="100px" />
+							width="71px" height="100px" alt="Css eficiente"/>
 						</td>
 						<td class="item-title">${item.produto.titulo }</td>
 						<td class="numeric-cell">${item.preco}</td>
