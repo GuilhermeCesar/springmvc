@@ -4,9 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
-<!DOCTYPE html>
-<html>
-	<tags:pageTemplate titulo="Livros de java, Android e muito mais ">
+<tags:pageTemplate titulo="Livros de java, Android e muito mais ">
+	<jsp:body>
 		<section id="index-section" class="container middle">
 			<h1 class="cdc-call">Últimos dias com os preços promocionais. Aproveite!</h1>
 
@@ -56,7 +55,6 @@
 				</li>
 			</ul>
 		</section>
-	</tags:pageTemplate>
-</body>
-</html>
+	</jsp:body>
+</tags:pageTemplate>
 
