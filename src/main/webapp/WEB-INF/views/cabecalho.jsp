@@ -12,7 +12,7 @@
                 <ul class="clearfix">
                     <li>
                         <a href="${s:mvcUrl('CCC#itens')}" rel="nofollow">
-                            <fmt:message key="menu.carrinho"/> (${carrinhoCompras.quantidade})
+                            <s:message code="menu.carrinho" arguments="${carrinhoCompras.quantidade}"/>
                         </a>
                     </li>
                     <li>
@@ -20,7 +20,19 @@
                             <fmt:message key="menu.sobre"/>
                         </a>
                     </li>
-                    <li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas Frequentes</a></li>
+
+                    <li>
+                        <a href="?locale=pt" rel="nofollow">
+                            <fmt:message key="menu.pt"/>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="?locale=en_US" rel="nofollow">
+                            <fmt:message key="menu.en"/>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
         </div>
